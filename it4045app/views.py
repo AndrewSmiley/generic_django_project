@@ -2,6 +2,7 @@ __author__ = 'pridemai'
 from django.shortcuts import render, render_to_response
 from django.http.response import HttpResponse
 from models import *
+from functions import authenticate
 import json
 # Python logging package
 import logging
@@ -9,13 +10,34 @@ import logging
 # Standard instance of a logger with __name__
 stdlogger = logging.getLogger(__name__)
 
+class SimpleClass:
+    def __init__(self):
 
+        self.var1 = "some var"
+        self.var2='another var'
+
+    def to_string(self):
+        return str(self)
+
+    def test(self, t):
+        print t
+    def __str__(self):
+        return self.var1+" "+self.var2
 def index(request):
     # print "something happened1"
     # stdlogger.info("Call to contactform method")
     # stdlogger.error("something happened")
 
-    return render(request, 'index.html', {'test': "my data"})
+    return render(request, 'index.html', {'test': "my data","simple_class":SimpleClass(), "variables":["1","2","3"]})
+
+def login(request):
+    return render(request, "login.html", {"description":"Please log in", "logged_in":False, "user": "Rick"})
+
+def do_login(request):
+
+    authenticate(request)
+
+    return HttpResponse(reversed("index"))
 
 
 def candidates_all(request):

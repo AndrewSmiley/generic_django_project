@@ -1,10 +1,15 @@
 <h2>Login</h2>
-<form method="post" action="{% url "authenticate" %}">{% csrf_token %}
-    <sup style="color: #ff0000"><sup>{{ login_error }}</sup></sup>
+{% if logged_in %}
+    <form method="post" action="{% url "authenticate" %}">{% csrf_token %}
+<h4>
+    {{ description }}
+</h4>
+    <label for="username">Username:</label> <input type="text" name="username">
+    <label for="password">Password:</label> <input type="password" name="password">
+    <button type="submit">Login</button>
 
-    <div class="forminputcontainer row" data-placeholder="Username"><input type="text" name="username" required
-                                                                           placeholder="Username"></div>
-    <div class="forminputcontainer row" data-placeholder="Password"><input type="password" name="password"
-                                                                           placeholder="Password" required></div>
-    <div class="row"><input type="submit" value="Login" class="btn btn-default"></div>
 </form>
+{% else %}
+    Welcome {{ user }}
+
+{% endif %}
