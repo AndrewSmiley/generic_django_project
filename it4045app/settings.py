@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'generic_django_project'
+    'it4045app'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'generic_django_project.urls'
+ROOT_URLCONF = 'it4045app.urls'
 
-WSGI_APPLICATION = 'generic_django_project.wsgi.application'
+WSGI_APPLICATION = 'it4045app.wsgi.application'
 
 
 # Database
@@ -107,3 +107,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'INFO',
+#             'class': 'logging.FileHandler',
+#             'filename': 'debug.log',
+#         },
+#     },
+#     "loggers":{
+#         'dba': {
+#             'handlers': ['console','dba_logfile'],
+#         }
+#     }
+#
+# }
